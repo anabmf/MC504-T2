@@ -21,6 +21,21 @@ We introduced two custom system calls in the Linux kernel:
 461    common    get_motd    __x64_sys_get_motd
 ```
 
+### Kernel Function Declarations
+
+To properly expose the custom system calls to the kernel, the following function prototypes must be added to a header file that is accessible within the kernel source:
+
+```c
+asmlinkage long sys_set_motd(const char __user *msg);
+asmlinkage long sys_get_motd(char __user *buf, size_t size);
+```
+
+These declarations should be placed in:
+
+```
+include/linux/syscalls.h
+```
+
 ### Guidelines and Restrictions
 
 - System call numbers must be **manually assigned** in the syscall table located at:
