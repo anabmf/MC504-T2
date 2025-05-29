@@ -1,11 +1,11 @@
 /*
-    Custom system calls: set_motd (460) and get_motd (461) for MC504 project.
+    Custom system calls: set_motd (468) and get_motd (469) for MC504 project.
  
     Entries added:
-      460    common    set_motd    __x64_sys_set_motd
-      461    common    get_motd    __x64_sys_get_motd
+      468    common    set_motd    sys_set_motd
+      469    common    get_motd    sys_get_motd
  
-    You must ensure these numbers (460 and 461) are not already used by other syscalls.
+    You must ensure these numbers (468 and 469) are not already used by other syscalls.
  */
 
 #include <stdio.h>
@@ -13,8 +13,8 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 
-#define __NR_set_motd 460
-#define __NR_get_motd 461
+#define __NR_set_motd 468
+#define __NR_get_motd 469
 #define MOTD_MAX_LEN 256
 
 int main() {
